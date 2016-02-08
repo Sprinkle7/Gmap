@@ -1,3 +1,3 @@
 # Gmap
 
-![alt tag](https://github.com/Sprinkle7/Gmap/blob/master/image/screenshort.PNG)
+![alt tag](https://github.com/Sprinkle7/Gmap/blob/master/image/screnshort.PNG)
