@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Google Map API</title>
+  <link rel="stylesheet" href="css/bulma.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+  <script src="js/locationpicker.jquery.js"></script>
+</head>
+<body>
+  <section class="hero is-primary">
+    <div class="hero-content">
+      <div class="container">
+        <h1 class="title">
+          Google Map Address+Coordinates
+        </h1>
+        <div class="columns is-vcentered">
+          <div class="column"></div>
+          <div class="column">
+            <p class="control">
+              <label for="">Search</label>
+              <input type="text" class="input" id="address"/>
+            </p>
+          </div>
+          <div class="column"></div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="columns">
+    <div class="column">
+      
+    </div>
+    <div class="column">
+      <div id="map-view" class="is-vcentered" style="width: 500px; height:400px;"></div>
+    </div>
+    <div class="column">
+      <p class="control">
+          <p class="control">
+              <label for="">Street</label>
+             <input class="input" id="street">
+          </p>
+          <p class="control">
+              <label for="">City</label>
+              <input class="input" id="city">
+          </p>
+          <p class="control">
+              <label for="">State</label>
+              <input class="input" id="state">
+          </p>
+        <label for="">Country</label>
+          <input class="input" id="country">
+      </p>
+       <p class="control">
+          <label for="">Zip Code</label>
+           <input class="input" id="zip">
+      </p>
+      <p class="control">
+          <label for=""> Latitude</label>
+          <input type="text" class="input" id="lat"/>
+      </p>
+      <p class="control">
+          <label for="">Longitude</label>
+          <input type="text" class="input" id="lon"/>
+      </p>
+    </div>
+    <div class="column">
+      
+    </div>
+  </div>
+  <footer class="footer">
+  <div class="container">
+    <div class="content is-centered">
+      <p>
+        Based On <strong>Jquery Location Picker</strong>
+      </p>
+    </div>
+  </div>
+</footer>
+<script>
+  function updateControls(addressComponents) {
+        $('#street').val(addressComponents.addressLine1);
+        $('#city').val(addressComponents.city);
+        $('#state').val(addressComponents.stateOrProvince);
+        $('#zip').val(addressComponents.postalCode);
+        $('#country').val(addressComponents.country);
+    }
+    $('#map-view').locationpicker({
+        location: {latitude: 34.0167, longitude: 71.5833},
+        enableAutocomplete: true,
+        radius:0,
+        onchanged: function (currentLocation, radius, isMarkerDropped) {
+            var addressComponents = $(this).locationpicker('map').location.addressComponents;
+            updateControls(addressComponents);
+        },
+        oninitialized: function(component) {
+            var addressComponents = $(component).locationpicker('map').location.addressComponents;
+            updateControls(addressComponents);
+        },
+        inputBinding: {
+            latitudeInput: $('#lat'),
+            longitudeInput: $('#lon'),
+            locationNameInput: $('#address')
+        },
+    });
+</script>
+</body>
+</html>
