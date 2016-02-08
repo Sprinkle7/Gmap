@@ -1,3 +1,3 @@
 # Gmap
 
-![alt tag](https://github.com/codeforpakistan/KPITB-File-Automation/blob/master/assets/images/1.PNG)
+![alt tag](https://github.com/Sprinkle7/Gmap/blob/master/image/screenshort.PNG)
